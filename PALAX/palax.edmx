@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PALAXModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClientsFizSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientsYourSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaleSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="IDStaff" Type="int" />
+          <Property Name="IDClientsFiz" Type="int" />
+          <Property Name="IDClientsYour" Type="int" />
+          <Property Name="Prise" Type="bigint" />
+        </EntityType>
+        <EntityType Name="StaffSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClientsFizSet_ClientsFizSet">
+          <End Role="ClientsFizSet" Type="Self.ClientsFizSet" Multiplicity="1" />
+          <End Role="ClientsFizSet1" Type="Self.ClientsFizSet" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsFizSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientsFizSet1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleSet_ClientsFizSet">
+          <End Role="ClientsFizSet" Type="Self.ClientsFizSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsFizSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDClientsFiz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleSet_ClientsYourSet">
+          <End Role="ClientsYourSet" Type="Self.ClientsYourSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsYourSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDClientsYour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PALAXModelContainer">
+          <EntitySet Name="ClientsFizSet" EntityType="Self.ClientsFizSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientsYourSet" EntityType="Self.ClientsYourSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleSet" EntityType="Self.SaleSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffSet" EntityType="Self.StaffSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClientsFizSet_ClientsFizSet" Association="Self.FK_ClientsFizSet_ClientsFizSet">
+            <End Role="ClientsFizSet" EntitySet="ClientsFizSet" />
+            <End Role="ClientsFizSet1" EntitySet="ClientsFizSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleSet_ClientsFizSet" Association="Self.FK_SaleSet_ClientsFizSet">
+            <End Role="ClientsFizSet" EntitySet="ClientsFizSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleSet_ClientsYourSet" Association="Self.FK_SaleSet_ClientsYourSet">
+            <End Role="ClientsYourSet" EntitySet="ClientsYourSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleSet_StaffSet" Association="Self.FK_SaleSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PALAXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClientsFizSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SaleSet" Relationship="Self.FK_SaleSet_ClientsFizSet" FromRole="ClientsFizSet" ToRole="SaleSet" />
+        </EntityType>
+        <EntityType Name="ClientsYourSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SaleSet" Relationship="Self.FK_SaleSet_ClientsYourSet" FromRole="ClientsYourSet" ToRole="SaleSet" />
+        </EntityType>
+        <EntityType Name="SaleSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDStaff" Type="Int32" />
+          <Property Name="IDClientsFiz" Type="Int32" />
+          <Property Name="IDClientsYour" Type="Int32" />
+          <Property Name="Prise" Type="Int64" />
+          <NavigationProperty Name="ClientsFizSet" Relationship="Self.FK_SaleSet_ClientsFizSet" FromRole="SaleSet" ToRole="ClientsFizSet" />
+          <NavigationProperty Name="ClientsYourSet" Relationship="Self.FK_SaleSet_ClientsYourSet" FromRole="SaleSet" ToRole="ClientsYourSet" />
+          <NavigationProperty Name="StaffSet" Relationship="Self.FK_SaleSet_StaffSet" FromRole="SaleSet" ToRole="StaffSet" />
+        </EntityType>
+        <EntityType Name="StaffSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SaleSet" Relationship="Self.FK_SaleSet_StaffSet" FromRole="StaffSet" ToRole="SaleSet" />
+        </EntityType>
+        <Association Name="FK_SaleSet_ClientsFizSet">
+          <End Role="ClientsFizSet" Type="Self.ClientsFizSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsFizSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDClientsFiz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleSet_ClientsYourSet">
+          <End Role="ClientsYourSet" Type="Self.ClientsYourSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsYourSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDClientsYour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="0..1" />
+          <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleSet">
+              <PropertyRef Name="IDStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PALAXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientsFizSet" EntityType="Self.ClientsFizSet" />
+          <EntitySet Name="ClientsYourSet" EntityType="Self.ClientsYourSet" />
+          <EntitySet Name="SaleSet" EntityType="Self.SaleSet" />
+          <EntitySet Name="StaffSet" EntityType="Self.StaffSet" />
+          <AssociationSet Name="FK_SaleSet_ClientsFizSet" Association="Self.FK_SaleSet_ClientsFizSet">
+            <End Role="ClientsFizSet" EntitySet="ClientsFizSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleSet_ClientsYourSet" Association="Self.FK_SaleSet_ClientsYourSet">
+            <End Role="ClientsYourSet" EntitySet="ClientsYourSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleSet_StaffSet" Association="Self.FK_SaleSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="SaleSet" EntitySet="SaleSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PALAXModelContainer" CdmEntityContainer="PALAXEntities">
+          <EntitySetMapping Name="ClientsFizSet">
+            <EntityTypeMapping TypeName="PALAXModel.ClientsFizSet">
+              <MappingFragment StoreEntitySet="ClientsFizSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientsYourSet">
+            <EntityTypeMapping TypeName="PALAXModel.ClientsYourSet">
+              <MappingFragment StoreEntitySet="ClientsYourSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleSet">
+            <EntityTypeMapping TypeName="PALAXModel.SaleSet">
+              <MappingFragment StoreEntitySet="SaleSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="IDStaff" ColumnName="IDStaff" />
+                <ScalarProperty Name="IDClientsFiz" ColumnName="IDClientsFiz" />
+                <ScalarProperty Name="IDClientsYour" ColumnName="IDClientsYour" />
+                <ScalarProperty Name="Prise" ColumnName="Prise" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffSet">
+            <EntityTypeMapping TypeName="PALAXModel.StaffSet">
+              <MappingFragment StoreEntitySet="StaffSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
