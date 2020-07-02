@@ -16,5 +16,17 @@ namespace PALAX
         {
             InitializeComponent();
         }
+
+        private void buttonClientsYour_Click(object sender, EventArgs e)
+        {
+            Form ClientsYour = new ClientsYour();
+            ClientsYour.Show();
+        }
+
+        private void buttonClientsFiz_Click(object sender, EventArgs e)
+        {
+            Form ClientsFiz = new ClientsFiz();
+            ClientsFiz.Show();
+        }
     }
 }

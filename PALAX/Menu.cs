@@ -38,8 +38,7 @@ namespace PALAX
 
         private void battonLog_Click(object sender, EventArgs e)
         {
-            Form Log = new Log();
-            Log.Show();
+
         }
     }
 }

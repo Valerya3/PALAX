@@ -8,6 +8,7 @@ namespace PALAX
 {
     static class Program
     {
+        public static Entities asdf = new Entities();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

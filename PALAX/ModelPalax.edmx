@@ -21,8 +21,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleSet">
           <Key>
@@ -44,19 +45,9 @@
           <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Persent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_ClientsFizSet_ClientsFizSet">
-          <End Role="ClientsFizSet" Type="Self.ClientsFizSet" Multiplicity="1" />
-          <End Role="ClientsFizSet1" Type="Self.ClientsFizSet" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ClientsFizSet">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ClientsFizSet1">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SaleSet_ClientsFizSet">
           <End Role="ClientsFizSet" Type="Self.ClientsFizSet" Multiplicity="0..1" />
           <End Role="SaleSet" Type="Self.SaleSet" Multiplicity="*" />
@@ -98,10 +89,6 @@
           <EntitySet Name="ClientsYourSet" EntityType="Self.ClientsYourSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleSet" EntityType="Self.SaleSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffSet" EntityType="Self.StaffSet" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ClientsFizSet_ClientsFizSet" Association="Self.FK_ClientsFizSet_ClientsFizSet">
-            <End Role="ClientsFizSet" EntitySet="ClientsFizSet" />
-            <End Role="ClientsFizSet1" EntitySet="ClientsFizSet" />
-          </AssociationSet>
           <AssociationSet Name="FK_SaleSet_ClientsFizSet" Association="Self.FK_SaleSet_ClientsFizSet">
             <End Role="ClientsFizSet" EntitySet="ClientsFizSet" />
             <End Role="SaleSet" EntitySet="SaleSet" />
@@ -137,8 +124,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SaleSet" Relationship="Self.FK_SaleSet_ClientsYourSet" FromRole="ClientsYourSet" ToRole="SaleSet" />
         </EntityType>
         <EntityType Name="SaleSet">
@@ -164,6 +152,8 @@
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Persent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SaleSet" Relationship="Self.FK_SaleSet_StaffSet" FromRole="StaffSet" ToRole="SaleSet" />
         </EntityType>
         <Association Name="FK_SaleSet_ClientsFizSet">
@@ -202,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PALAXEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClientsFizSet" EntityType="Self.ClientsFizSet" />
           <EntitySet Name="ClientsYourSet" EntityType="Self.ClientsYourSet" />
           <EntitySet Name="SaleSet" EntityType="Self.SaleSet" />
@@ -225,7 +215,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PALAXModelContainer" CdmEntityContainer="PALAXEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PALAXModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="ClientsFizSet">
             <EntityTypeMapping TypeName="PALAXModel.ClientsFizSet">
               <MappingFragment StoreEntitySet="ClientsFizSet">
@@ -242,8 +232,9 @@
               <MappingFragment StoreEntitySet="ClientsYourSet">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -267,6 +258,8 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Persent" ColumnName="Persent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -25,6 +25,8 @@ namespace PALAX
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Persent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleSet> SaleSet { get; set; }

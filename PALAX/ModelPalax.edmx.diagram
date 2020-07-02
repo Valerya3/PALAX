@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dcd757eb39e94a0ca3d928f6196e0563" Name="Diagram1">
-        <EntityTypeShape EntityType="PALAXModel.ClientsFizSet" Width="1.5" PointX="5.5" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PALAXModel.ClientsYourSet" Width="1.5" PointX="11.125" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PALAXModel.SaleSet" Width="1.5" PointX="8" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PALAXModel.StaffSet" Width="1.5" PointX="4.25" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="57be8517e6ce4a129eba98d1f177712f" Name="Diagram1">
+        <EntityTypeShape EntityType="PALAXModel.ClientsFizSet" Width="1.5" PointX="0.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PALAXModel.ClientsYourSet" Width="1.5" PointX="3.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PALAXModel.SaleSet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PALAXModel.StaffSet" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="PALAXModel.FK_SaleSet_ClientsFizSet" ManuallyRouted="false" />
         <AssociationConnector Association="PALAXModel.FK_SaleSet_ClientsYourSet" ManuallyRouted="false" />
         <AssociationConnector Association="PALAXModel.FK_SaleSet_StaffSet" ManuallyRouted="false" />

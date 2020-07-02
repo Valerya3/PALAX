@@ -68,7 +68,7 @@
       <DependentUpon>ClientsFiz.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientsFizSet.cs">
-      <DependentUpon>palax.tt</DependentUpon>
+      <DependentUpon>ModelPalax.tt</DependentUpon>
     </Compile>
     <Compile Include="ClientsYour.cs">
       <SubType>Form</SubType>
@@ -77,34 +77,28 @@
       <DependentUpon>ClientsYour.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientsYourSet.cs">
-      <DependentUpon>palax.tt</DependentUpon>
+      <DependentUpon>ModelPalax.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Log.Designer.cs">
-      <DependentUpon>Log.cs</DependentUpon>
-    </Compile>
-    <Compile Include="palax.Context.cs">
+    <Compile Include="ModelPalax.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>palax.Context.tt</DependentUpon>
+      <DependentUpon>ModelPalax.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="palax.cs">
+    <Compile Include="ModelPalax.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>palax.tt</DependentUpon>
+      <DependentUpon>ModelPalax.tt</DependentUpon>
     </Compile>
-    <Compile Include="palax.Designer.cs">
+    <Compile Include="ModelPalax.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>palax.edmx</DependentUpon>
+      <DependentUpon>ModelPalax.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,7 +109,7 @@
       <DependentUpon>Sale.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleSet.cs">
-      <DependentUpon>palax.tt</DependentUpon>
+      <DependentUpon>ModelPalax.tt</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs">
       <SubType>Form</SubType>
@@ -124,13 +118,19 @@
       <DependentUpon>Staff.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffSet.cs">
-      <DependentUpon>palax.tt</DependentUpon>
+      <DependentUpon>ModelPalax.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Clients.resx">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientsFiz.resx">
+      <DependentUpon>ClientsFiz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientsYour.resx">
       <DependentUpon>ClientsYour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -140,18 +140,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sale.resx">
+      <DependentUpon>Sale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Staff.resx">
       <DependentUpon>Staff.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="palax.edmx">
+    <EntityDeploy Include="ModelPalax.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>palax.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelPalax.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
-    <None Include="palax.edmx.diagram">
-      <DependentUpon>palax.edmx</DependentUpon>
+    <None Include="ModelPalax.edmx.diagram">
+      <DependentUpon>ModelPalax.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,19 +170,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="palax.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>palax.Context.cs</LastGenOutput>
-      <DependentUpon>palax.edmx</DependentUpon>
-    </Content>
-    <Content Include="palax.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>palax.edmx</DependentUpon>
-      <LastGenOutput>palax.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="ModelPalax.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPalax.edmx</DependentUpon>
+      <LastGenOutput>ModelPalax.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelPalax.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPalax.edmx</DependentUpon>
+      <LastGenOutput>ModelPalax.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Снимок3.PNG" />
+    <None Include="Resources\Снимок1.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
